@@ -31,9 +31,10 @@ jobs:
         fi
       env:
         TEST_SECRET: ${{ secrets.TEST_SECRET }}
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    - name: Start CI
+      shell: bash
+      run: |
+        export TestVariable="${{ vars.TEST_VARIABLE }}"
+        dotnet restore
+        dotnet build --no-restore
+        dotnet test --no-build --verbosity normal
