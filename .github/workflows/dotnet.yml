@@ -34,7 +34,12 @@ jobs:
     - name: Start CI
       shell: bash
       run: |
-        export TestVariable="${{ vars.TEST_VARIABLE }}"
+        if [ ${{ vars.TEST_VARIABLE }} != "" ];
+        then
+          export TestVariable="${{ vars.TEST_VARIABLE }}"
+        else
+          export TestVariable="This is test variable from integration test"
+        fi
         dotnet restore
         dotnet build --no-restore
         dotnet test --no-build --verbosity normal
