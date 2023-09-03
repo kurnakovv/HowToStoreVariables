@@ -21,7 +21,7 @@ jobs:
       with:
         dotnet-version: 7.0.x
     - name: Set secret
-      run: dotnet user-secrets set "TEST_SECRET" "$TEST_SECRET" --project /HotToStoreVariables
+      run: dotnet user-secrets set "TEST_SECRET" "$TEST_SECRET" --project HotToStoreVariables/
       env:
         TEST_SECRET: ${{ secrets.TEST_SECRET }}
     - name: Restore dependencies
