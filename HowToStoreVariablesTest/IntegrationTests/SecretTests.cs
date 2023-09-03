@@ -23,6 +23,7 @@ namespace HowToStoreVariablesTest.IntegrationTests
         {
             string secret = _configuration["TEST_SECRET"];
             Assert.NotNull(secret);
+            Assert.Equal("This is very secret value (12345)", secret);
         }
     }
 }
