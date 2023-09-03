@@ -23,8 +23,8 @@ jobs:
     - name: Set secret
       shell: bash
       run: |
-        if [ "$TEST_SECRET" != "" ] 
-        then;
+        if [ "$TEST_SECRET" != "" ];
+        then
           dotnet user-secrets set "TEST_SECRET" "$TEST_SECRET" --project HowToStoreVariables/
         else
           dotnet user-secrets set "TEST_SECRET" "CI_CD" --project HowToStoreVariables/
