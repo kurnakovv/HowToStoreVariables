@@ -14,6 +14,8 @@ builder.Configuration.AddUserSecrets<Program>();
 builder.Services.AddSingleton(builder.Configuration.GetSection("Variables").Get<Variables>());
 builder.Services.AddSingleton(builder.Configuration.Get<Root>());
 
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,6 +24,8 @@ var app = builder.Build();
     app.UseSwagger();
     app.UseSwaggerUI();
 //}
+
+app.MapHealthChecks("/ping");
 
 app.UseHttpsRedirection();
 
