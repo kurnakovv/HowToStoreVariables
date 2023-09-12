@@ -18,6 +18,10 @@ namespace HowToStoreVariables.Controllers
         [HttpGet]
         public string Get()
         {
+            var constant = _configuration["Constant"]; // Constants (Camel case)
+            var env = Environment.GetEnvironmentVariable("EnvVariable"); // Environment variables (Camel case)
+            var secret = _configuration["TEST_SECRET"]; // Secrets local and GitHub (Upper case)
+            var hostingRender = Environment.GetEnvironmentVariable("SECRET_ENV_VARIABLE"); // Secret env variable hosting (Upper case)
             return Environment.GetEnvironmentVariable("TEST_SECRET") ?? _configuration["TEST_SECRET"];
         }
     }
